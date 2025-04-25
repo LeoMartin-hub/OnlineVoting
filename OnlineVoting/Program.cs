@@ -8,12 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-    // Configure ASP.NET Core Identity
+// Configure ASP.NET Core Identity
 builder.Services.AddIdentity<User, IdentityRole>()
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
 
- void Configure(IApplicationBuilder app, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+void Configure(IApplicationBuilder app, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
 {
     // Other app configurations
 
@@ -40,9 +40,9 @@ builder.Services.AddScoped<IVoteRepository, VoteRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IElectionRepository, ElectionRepository>();
 builder.Services.AddScoped<ICandidateRepository, CandidateRepository>();
-    // Add other repositories
+// Add other repositories
 
-    // Register ApplicationDbContext
+// Register ApplicationDbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 /*var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
